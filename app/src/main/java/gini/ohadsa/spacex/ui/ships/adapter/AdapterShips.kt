@@ -66,7 +66,7 @@ class AdapterShips @Inject constructor(
         items.remove(item)
     }
 
-    fun updateList(updatedUserList: MutableList<ShipWithLaunches>) {
+    fun updateList(updatedUserList: List<ShipWithLaunches>) {
         shipsDiffUtils.oldList = items
         shipsDiffUtils.newList = updatedUserList
         val diffResult = DiffUtil.calculateDiff(shipsDiffUtils)

@@ -11,6 +11,8 @@
     <string name="menu_launcher">Launchers</string>
     <string name="menu_ships">Ships</string>
     <string name="menu_slideshow">Slideshow</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sort_options">Sort Options</string>
+    <string name="search">Search</string>
+    <string name="date">Sort by date</string>
+    <string name="title">Sort by title</string>
 </resources>

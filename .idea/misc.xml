@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.20893285371702638" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_bookmark_border_24.xml" value="0.222" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_bookmarks_24.xml" value="0.222" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_manage_search_24.xml" value="0.222" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.24835526315789475" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.19610507246376813" />
@@ -17,6 +20,8 @@
         <entry key="app/src/main/res/layout/ship_card.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.24375" />
         <entry key="app/src/main/res/menu/main.xml" value="0.24375" />
+        <entry key="app/src/main/res/menu/menu_launch.xml" value="0.1675925925925926" />
+        <entry key="app/src/main/res/menu/menu_ships.xml" value="0.30625" />
       </map>
     </option>
   </component>

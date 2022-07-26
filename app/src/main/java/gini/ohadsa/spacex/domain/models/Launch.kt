@@ -16,7 +16,7 @@ data class Launch @JvmOverloads constructor(
     @TypeConverters
     val links: LaunchLinksResponse,
     val details: String?,
-    val name: String?,
+    val name: String,
     @SerializedName("static_fire_date_unix")
     val date: Long,
     @Ignore
