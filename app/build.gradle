@@ -1,0 +1,142 @@
+plugins {
+
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.devtools.ksp'
+    id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "gini.ohadsa.spacex"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+
+    // Android Jetpack Paging 3.0:
+    implementation "androidx.paging:paging-runtime:3.2.0-alpha01"
+
+    // KSP:
+    implementation("com.google.devtools.ksp:symbol-processing-api:1.7.0-1.0.6")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+
+    def retrofit_version = "2.9.0"
+    def room_version = "2.4.2"
+    def nav_version = "2.5.0"
+    def lifecycle_extension_version = '2.5.0'
+
+    // room:
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // retrofit:
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // picasso:
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // coroutines:
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3'
+    // To use trySend() instead of offer() in callbackFlow (see https://github.com/Kotlin/kotlinx.coroutines/issues/974)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3'
+
+    // coroutines for okhttp:
+    implementation("ru.gildor.coroutines:kotlin-coroutines-okhttp:1.0")
+
+    // hilt:
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+
+
+    // lifecycle:
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_extension_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_extension_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_extension_version"
+    // To observe the flow within the Service based on the lifecycle
+    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_extension_version"
+
+    // okhttp:
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Chrome Custom Tabs:
+    implementation "androidx.browser:browser:1.4.0"
+
+    //Animation with Lottie:
+    implementation "com.airbnb.android:lottie:5.0.1"
+
+    //Swipe refresh layout:
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    //location and maps:
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    //media notification style
+    implementation "androidx.media:media:1.6.0"
+
+    //work manager:
+    def work_version = "2.7.1"
+    // Kotlin + coroutines
+
+
+    implementation("androidx.work:work-gcm:$work_version")
+
+
+    // optional - Test helpers
+    androidTestImplementation("androidx.work:work-testing:$work_version")
+
+    // optional - Multiprocess support - for apps that use multiple processes
+    implementation "androidx.work:work-multiprocess:$work_version"
+
+    //work + hilt injections
+    implementation "androidx.hilt:hilt-work:1.0.0"
+
+    //youtube
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.26'
+
+}

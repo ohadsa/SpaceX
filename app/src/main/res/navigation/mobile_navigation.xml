@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_ships">
+
+    <fragment
+        android:id="@+id/nav_ships"
+        android:name="gini.ohadsa.spacex.ui.ships.ShipsFragment"
+        android:label= "@string/menu_ships"
+        tools:layout="@layout/fragment_ships" >
+        <action
+            android:id="@+id/action_nav_ships_to_shipItemFragment"
+            app:destination="@id/shipItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_launcher"
+        android:name="gini.ohadsa.spacex.ui.launches.LaunchesFragment"
+        android:label="@string/menu_launcher"
+        tools:layout="@layout/fragment_launches" >
+        <action
+            android:id="@+id/action_nav_launcher_to_launchItemFragment"
+            app:destination="@id/launchItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchItemFragment"
+        android:name="gini.ohadsa.spacex.ui.launchitem.LaunchItemFragment"
+        android:label="fragment_launch_item"
+        tools:layout="@layout/fragment_launch_item" >
+        <argument
+            android:name="lauchWithShips"
+            app:argType="gini.ohadsa.spacex.domain.models.LaunchWithShips" />
+        <action
+            android:id="@+id/action_launchItemFragment_to_shipItemFragment"
+            app:destination="@id/shipItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shipItemFragment"
+        android:name="gini.ohadsa.spacex.ui.shipitem.ShipItemFragment"
+        android:label="ShipItemFragment" >
+        <argument
+            android:name="shipWithLaunches"
+            app:argType="gini.ohadsa.spacex.domain.models.ShipWithLaunches" />
+        <action
+            android:id="@+id/action_shipItemFragment_to_launchItemFragment"
+            app:destination="@id/launchItemFragment" />
+    </fragment>
+
+</navigation>
