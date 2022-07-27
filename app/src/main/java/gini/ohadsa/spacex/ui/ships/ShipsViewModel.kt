@@ -44,5 +44,5 @@ class ShipsViewModel @Inject constructor(
 
 data class QueryShip(
     val query: String,
-    val Ship: List<ShipWithLaunches> //true-Movie , false - TV Show
+    val Ship: List<ShipWithLaunches>
 )

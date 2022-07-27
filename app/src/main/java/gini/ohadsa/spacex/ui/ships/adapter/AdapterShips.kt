@@ -20,8 +20,6 @@ import javax.inject.Inject
 class AdapterShips @Inject constructor(
     private val shipsDiffUtils: ShipsDiffUtils,
     private val imageLoader: ImageLoader,
-    private val gridLayoutManager: GridLayoutManager,
-    private val adapterLaunches: AdapterLaunches
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: MutableList<ShipWithLaunches> = mutableListOf()

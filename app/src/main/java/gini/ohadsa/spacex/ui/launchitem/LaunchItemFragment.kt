@@ -95,7 +95,7 @@ class LaunchItemFragment : Fragment() {
                 item.links.patches.large?.let { img ->
                     imageLoader.load(img, binding.launchImage)
                 }
-                item.name?.let { name ->
+                item.name.let { name ->
                     binding.launchTitle.text = name
                 }
                 item.details?.let { details ->
