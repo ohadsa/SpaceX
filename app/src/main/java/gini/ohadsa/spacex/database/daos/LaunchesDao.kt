@@ -1,6 +1,7 @@
 package gini.ohadsa.spacex.database.daos
 
 import androidx.room.*
+import androidx.sqlite.db.SimpleSQLiteQuery
 import gini.ohadsa.spacex.domain.models.*
 import kotlinx.coroutines.flow.Flow
 
@@ -37,8 +38,8 @@ interface LaunchesDao {
     suspend fun insertShipLaunchCrossRef(shipLaunchCrossRef: ShipLaunchCrossRef)
 
     @Transaction
-    @Query("SELECT * FROM Launch")
-    suspend fun getLaunchWithShips(): List<LaunchWithShips>
+    @RawQuery
+    suspend fun getLaunchWithShips(sortType : SimpleSQLiteQuery): List<LaunchWithShips>
 
 
     @Transaction

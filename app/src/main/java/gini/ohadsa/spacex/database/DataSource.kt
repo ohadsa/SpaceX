@@ -25,7 +25,7 @@ interface DataSource {
 
     //cross
     suspend fun getShipWithLaunches(): List<ShipWithLaunches>
-    suspend fun getLaunchWithShips(): List<LaunchWithShips>
+    suspend fun getLaunchWithShips(sortType : String = SortType.DATE.type): List<LaunchWithShips>
     suspend fun getLaunchWithShipsById(id:String): LaunchWithShips
     suspend fun getShipWithLaunchesById(id:String): ShipWithLaunches
 

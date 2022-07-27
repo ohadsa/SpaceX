@@ -1,9 +1,7 @@
 package gini.ohadsa.spacex.domain.repository
 
 import gini.ohadsa.spacex.database.DataSource
-import gini.ohadsa.spacex.domain.models.Launch
 import gini.ohadsa.spacex.domain.models.LaunchWithShips
-import gini.ohadsa.spacex.domain.models.Ship
 import gini.ohadsa.spacex.domain.models.ShipWithLaunches
 import gini.ohadsa.spacex.network.SpaceXApi
 import kotlinx.coroutines.flow.Flow
@@ -26,12 +24,12 @@ class SpaceXRepositoryImpl @Inject constructor(
             )
         }
 
-    override fun getAllLaunches(): Flow<List<LaunchWithShips>> =
+    override fun getAllLaunches(type: String): Flow<List<LaunchWithShips>> =
         flow {
             emit(
-                dataSource.getLaunchWithShips().ifEmpty {
+                dataSource.getLaunchWithShips(type).ifEmpty {
                     dataSource.insertLaunchesWithShips(spaceXApi.allLaunches())
-                    return@ifEmpty dataSource.getLaunchWithShips()
+                    return@ifEmpty dataSource.getLaunchWithShips(type)
                 }
             )
         }

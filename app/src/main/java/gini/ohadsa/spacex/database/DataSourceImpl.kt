@@ -1,5 +1,6 @@
 package gini.ohadsa.spacex.database
 
+import androidx.sqlite.db.SimpleSQLiteQuery
 import gini.ohadsa.spacex.database.daos.LaunchesDao
 import gini.ohadsa.spacex.database.daos.ShipsDao
 import gini.ohadsa.spacex.domain.models.Launch
@@ -39,8 +40,8 @@ class DataSourceImpl @Inject constructor(
     override suspend fun getShipWithLaunches(): List<ShipWithLaunches> =
         shipsDao.getShipWithLaunches()
 
-    override suspend fun getLaunchWithShips(): List<LaunchWithShips> =
-        launchesDao.getLaunchWithShips()
+    override suspend fun getLaunchWithShips(sortType : String): List<LaunchWithShips> =
+        launchesDao.getLaunchWithShips(SimpleSQLiteQuery("SELECT * FROM Launch ORDER By $sortType"))
 
     override suspend fun getLaunchWithShipsById(id: String): LaunchWithShips = launchesDao.getLaunchWithShipsById(id)
 

@@ -45,7 +45,8 @@ class LaunchesFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun collectItemsToAdapter() {
         lifecycleScope.launch {
             viewModel.launches.collect { launches ->
-                    myAdapter.updateList(launches)
+                myAdapter.updateList(launches)
+                binding.launchesRecycler.scrollToPosition(0)
             }
         }
     }
@@ -65,13 +66,11 @@ class LaunchesFragment : Fragment(), SearchView.OnQueryTextListener {
                 return when (menuItem.itemId) {
                     R.id.title -> {
                         viewModel.updateSort(SortType.TITLE)
-                        binding.launchesRecycler.scrollToPosition(0)
 
                         true
                     }
                     R.id.date -> {
                         viewModel.updateSort(SortType.DATE)
-                        binding.launchesRecycler.scrollToPosition(0)
                         true
                     }
                     else -> false
