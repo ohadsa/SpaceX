@@ -1,14 +1,8 @@
 package gini.ohadsa.spacex.ui.ships
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import gini.ohadsa.spacex.domain.models.Launch
-import gini.ohadsa.spacex.domain.models.Ship
 import gini.ohadsa.spacex.domain.models.ShipWithLaunches
-import gini.ohadsa.spacex.domain.repository.SpaceXRepository
 import gini.ohadsa.spacex.domain.usecases.ships.GetAllShipsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*

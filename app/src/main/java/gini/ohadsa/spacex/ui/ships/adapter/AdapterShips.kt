@@ -5,15 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gini.ohadsa.spacex.R
-import gini.ohadsa.spacex.domain.models.LaunchWithShips
-import gini.ohadsa.spacex.domain.models.Ship
 import gini.ohadsa.spacex.domain.models.ShipWithLaunches
-import gini.ohadsa.spacex.ui.launches.adapter.AdapterLaunches
 import gini.ohadsa.spacex.utils.imageloader.ImageLoader
 import javax.inject.Inject
 

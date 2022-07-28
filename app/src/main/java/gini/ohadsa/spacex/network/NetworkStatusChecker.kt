@@ -9,14 +9,16 @@ class NetworkStatusChecker(
 ) {
 
 
-    val networkRequest = NetworkRequest.Builder()
+    private val networkRequest = NetworkRequest.Builder()
         .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
         .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
         .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
         .build()
 
 
-
+/*
+listener to connectivity changes.. -> can also use broadcast receiver for that
+ */
     fun addNetworkChangeListener(networkCallback: ConnectivityManager.NetworkCallback){
         connectivityManager?.requestNetwork(networkRequest, networkCallback)
     }
@@ -29,6 +31,7 @@ class NetworkStatusChecker(
 
         }
     }
+
 
     //better way to check internet connection is just ping to google.com ...
     fun hasInternetConnection(): Boolean {

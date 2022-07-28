@@ -3,7 +3,6 @@ package gini.ohadsa.spacex.ui.launches
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import gini.ohadsa.spacex.domain.models.LaunchWithShips
-import gini.ohadsa.spacex.domain.repository.SpaceXRepository
 import gini.ohadsa.spacex.domain.usecases.launches.GetAllLaunchesUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*

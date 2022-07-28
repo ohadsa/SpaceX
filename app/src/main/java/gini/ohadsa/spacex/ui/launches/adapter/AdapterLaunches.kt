@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import gini.ohadsa.spacex.R
-import gini.ohadsa.spacex.domain.models.Launch
 import gini.ohadsa.spacex.domain.models.LaunchWithShips
 import gini.ohadsa.spacex.ui.launches.adapter.AdapterLaunches.ItemClickedListener
 import gini.ohadsa.spacex.utils.imageloader.ImageLoader
@@ -45,7 +44,7 @@ class AdapterLaunches @Inject constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val vh = holder as LaunchViewHolder
         val launchWithShips = getItem(position)
-        launchWithShips.launch.name?.let {
+        launchWithShips.launch.name.let {
             vh.launchTitle.text = it
         }
         launchWithShips.launch.links.patches.large?.let {

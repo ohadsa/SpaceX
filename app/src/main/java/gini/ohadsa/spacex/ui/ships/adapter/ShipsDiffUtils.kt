@@ -1,7 +1,6 @@
 package gini.ohadsa.spacex.ui.ships.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import gini.ohadsa.spacex.domain.models.Ship
 import gini.ohadsa.spacex.domain.models.ShipWithLaunches
 import javax.inject.Inject
 
