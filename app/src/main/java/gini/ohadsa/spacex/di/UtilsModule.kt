@@ -11,7 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import gini.ohadsa.spacex.utils.imageloader.ImageLoader
 import gini.ohadsa.spacex.utils.imageloader.ImageLoaderImpl
-import gini.ohadsa.weather.network.NetworkStatusChecker
+import gini.ohadsa.spacex.network.NetworkStatusChecker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

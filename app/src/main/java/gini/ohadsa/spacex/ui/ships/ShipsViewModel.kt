@@ -9,14 +9,14 @@ import gini.ohadsa.spacex.domain.models.Launch
 import gini.ohadsa.spacex.domain.models.Ship
 import gini.ohadsa.spacex.domain.models.ShipWithLaunches
 import gini.ohadsa.spacex.domain.repository.SpaceXRepository
+import gini.ohadsa.spacex.domain.usecases.ships.GetAllShipsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
 class ShipsViewModel @Inject constructor(
-    repository: SpaceXRepository,
-
+    getAllShipsUseCase: GetAllShipsUseCase
     ) : ViewModel() {
 
     private var currentQuery: MutableStateFlow<String> = MutableStateFlow("")
@@ -24,7 +24,7 @@ class ShipsViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     val ships: Flow<List<ShipWithLaunches>> = combine(
         currentQuery,
-        repository.getAllShips()
+        getAllShipsUseCase.get()
     ) { q, m -> QueryShip(q, m) }.flatMapLatest {queryShip->
         flow{
             emit(queryShip.Ship.mapNotNull {

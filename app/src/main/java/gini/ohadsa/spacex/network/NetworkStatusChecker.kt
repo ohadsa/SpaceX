@@ -1,4 +1,4 @@
-package gini.ohadsa.weather.network
+package gini.ohadsa.spacex.network
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -17,7 +17,7 @@ class NetworkStatusChecker(
 
 
 
-    fun addCallback(networkCallback: ConnectivityManager.NetworkCallback){
+    fun addNetworkChangeListener(networkCallback: ConnectivityManager.NetworkCallback){
         connectivityManager?.requestNetwork(networkRequest, networkCallback)
     }
 
@@ -30,6 +30,7 @@ class NetworkStatusChecker(
         }
     }
 
+    //better way to check internet connection is just ping to google.com ...
     fun hasInternetConnection(): Boolean {
         val network = connectivityManager?.activeNetwork ?: return false
 

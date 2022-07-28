@@ -4,15 +4,14 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import gini.ohadsa.spacex.domain.models.Launch
 import gini.ohadsa.spacex.domain.models.LaunchWithShips
-import gini.ohadsa.spacex.domain.models.Ship
 import gini.ohadsa.spacex.domain.models.ShipWithLaunches
-import gini.ohadsa.spacex.domain.repository.SpaceXRepository
+import gini.ohadsa.spacex.domain.usecases.ships.GetShipByIdUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class LaunchItemViewModel @Inject constructor(
-    private val repository : SpaceXRepository
+    private val getShipByIdUseCase: GetShipByIdUseCase
 ) : ViewModel() {
 
     var launchFlow: MutableSharedFlow<Launch> = MutableSharedFlow(1,1)
@@ -21,7 +20,7 @@ class LaunchItemViewModel @Inject constructor(
     suspend fun setItem(item: LaunchWithShips) {
         launchFlow.tryEmit(item.launch)
         item.ships.forEach {
-            shipFlow.tryEmit(repository.getShipById(it.shipId))
+            shipFlow.tryEmit(getShipByIdUseCase.get(it.shipId))
         }
     }
 

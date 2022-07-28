@@ -4,13 +4,14 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import gini.ohadsa.spacex.domain.models.LaunchWithShips
 import gini.ohadsa.spacex.domain.repository.SpaceXRepository
+import gini.ohadsa.spacex.domain.usecases.launches.GetAllLaunchesUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
 class LaunchesViewModel @Inject constructor(
-    private val repository: SpaceXRepository
+    getAllLaunchesUseCase: GetAllLaunchesUseCase
 ) : ViewModel() {
 
     private var currentQuery: MutableStateFlow<String> = MutableStateFlow("")
@@ -21,7 +22,7 @@ class LaunchesViewModel @Inject constructor(
         currentQuery,
         currentSortType,
     ) { q, s -> QueryLaunch(q, s) }.flatMapLatest { queryLaunch ->
-        return@flatMapLatest repository.getAllLaunches(queryLaunch.sortType.type).map { lst ->
+        return@flatMapLatest getAllLaunchesUseCase.get(queryLaunch.sortType.type).map { lst ->
             lst.mapNotNull { item ->
                 if (item.launch.name.lowercase()
                         .contains(queryLaunch.query, ignoreCase = true)
