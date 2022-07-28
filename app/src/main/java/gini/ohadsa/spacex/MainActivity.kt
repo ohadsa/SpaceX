@@ -1,24 +1,30 @@
 package gini.ohadsa.spacex
 
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Bundle
-import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import gini.ohadsa.spacex.databinding.ActivityMainBinding
+import gini.ohadsa.spacex.network.NetworkStatusChecker
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var networkStatusChecker: NetworkStatusChecker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_ships, R.id.nav_launcher
             ), drawerLayout
         )
+        with(networkStatusChecker) {
+            // Passing each menu ID as a set of Ids because each
+            // menu should be considered as top level destinations.
+            appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.nav_ships, R.id.nav_launcher
+                ), drawerLayout
+            )
+            addNetworkChangeListener(object : ConnectivityManager.NetworkCallback() {
+                override fun onLost(network: Network) {
+                    Snackbar.make(binding.root, "Connection Failed!", Snackbar.LENGTH_SHORT).show()
+                }
+            })
+        }
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
