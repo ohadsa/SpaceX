@@ -1,7 +1,8 @@
-# SpaceX
-## mvvm archtecture
+# SpaceX 
+
 app that shows ships and launches, and the connection between them with option to sort and search <br/>
 the ui is clean with webview for al the references links and youtube player for videos
+* MVVM Arcitecture
 * Retrofit 
 * Room database 
 * dependency injection <br/>
